@@ -10,17 +10,17 @@
 
 ## Key requests
 
-### 1. Create the initial DocForge mockups
+### 1. Create the initial Nexora mockups
 
-- **Asked:** Create a static DocForge landing page, API documentation example, shared CSS, and README.
+- **Asked:** Create a static Nexora landing page, API documentation example, shared CSS, and README.
 - **Got:** A first version with `index.html`, `docs.html`, `style.css`, and `README.md`.
 - **Changed or rejected:** After reading the official Stage 1 brief, the landing page was replaced with the required API project list mockup. The supplementary `docs.html` page was kept.
 
 ### 2. Adapt the project to the official Stage 1 checklist
 
 - **Asked:** Read the assignment and implement the required header, form, three cards, responsive layout, focus state, dark theme, README checklist, and AI journal.
-- **Got:** A semantic HTML form and list, three DocForge projects, a `.done` card, a breakpoint at 700px, `:focus-visible`, dark-mode variables, and documentation.
-- **Changed or rejected:** The fields were adapted from the TaskFlow example to DocForge: project name, published state, plan, category, and owner.
+- **Got:** A semantic HTML form and list, three Nexora projects, a `.done` card, a breakpoint at 700px, `:focus-visible`, dark-mode variables, and documentation.
+- **Changed or rejected:** The fields were adapted from the TaskFlow example to Nexora: project name, published state, plan, category, and owner.
 
 ### 3. Verify the implementation
 
@@ -30,4 +30,4 @@
 
 ## What I learned / what did not work
 
-The official brief requires a list-management mockup rather than a marketing landing page, so the first `index.html` version did not match the deliverable and was replaced. The DocForge API project model now includes all five fields needed by later stages. The page can be opened directly from disk and uses CSS-only responsive, focus, and dark-mode behavior. GitHub commit and push steps still need to be performed by the student because repository credentials and the final public URL are not available here.
+The official brief requires a list-management mockup rather than a marketing landing page, so the first `index.html` version did not match the deliverable and was replaced. The Nexora API project model now includes all five fields needed by later stages. The page can be opened directly from disk and uses CSS-only responsive, focus, and dark-mode behavior. GitHub commit and push steps still need to be performed by the student because repository credentials and the final public URL are not available here.

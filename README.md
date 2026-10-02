@@ -1,10 +1,10 @@
-# DocForge
+# Nexora
 
-DocForge is a web application for turning OpenAPI files into clear, hosted, wiki-style API documentation. The application manages a list of API projects. Each project has a name, a published/draft state, a plan label, a category, and an owner. This model gives the later JavaScript, React, server, database, and authentication stages the data they need.
+Nexora is a web application for turning OpenAPI files into clear, hosted, wiki-style API documentation. The application manages a list of API projects. Each project has a name, a published/draft state, a plan label, a category, and an owner. This model gives the later JavaScript, React, server, database, and authentication stages the data they need.
 
 ## Problem it solves
 
-API documentation is often difficult to keep organized and up to date. DocForge will give development teams one place to add API projects, generate documentation from OpenAPI specifications, and publish a readable reference for their users.
+API documentation is often difficult to keep organized and up to date. Nexora will give development teams one place to add API projects, generate documentation from OpenAPI specifications, and publish a readable reference for their users.
 
 ## Stage 1 theme and sample data
 
@@ -45,7 +45,7 @@ The current implementation contains a semantic static page with a header, add-pr
 ## Project structure
 
 ```text
-DocForge/
+Nexora/
 ├── index.html           # Stage 1 API project list mockup
 ├── docs.html            # Supplementary generated Users API example
 ├── style.css            # Shared stylesheet and Stage 1 responsive styles
