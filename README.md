@@ -42,6 +42,8 @@ The three hard-coded sample projects are Commerce API, Users API, and Analytics 
 
 The current implementation contains a semantic static page with a header, add-project form, project list, three cards, responsive layout, visible keyboard focus, and a dark color scheme based on `prefers-color-scheme`. There is no JavaScript or backend yet.
 
+The visual identity uses an Onyx and Carbon Black base with Dark Garnet, Mahogany Red, Strawberry Red, Silver, Dust Grey, White Smoke, and White accents. On desktop, the project list is the primary left column and the add-project form is placed in a narrower right column; below 700px the form moves above the list.
+
 ## Project structure
 
 ```text
