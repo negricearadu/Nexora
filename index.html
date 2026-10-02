@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DocForge API project collection mockup.">
+  <title>DocForge - API projects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-page">
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="index.html" aria-label="DocForge home">
+        <span class="app-brand-mark" aria-hidden="true">D</span>
+        <span>DocForge</span>
+      </a>
+      <div class="app-header-copy">
+        <p class="app-eyebrow">API documentation workspace</p>
+        <p>Turn OpenAPI specifications into documentation people love to use.</p>
+      </div>
+      <p class="app-counter">3 projects, of which 2 published</p>
+    </div>
+  </header>
+
+  <main class="app-container">
+    <section class="app-panel add-panel" aria-labelledby="add-title">
+      <p class="app-eyebrow">New documentation</p>
+      <h1 id="add-title">Add an API project</h1>
+      <p class="panel-description">Create a project now and connect an OpenAPI file in a later stage.</p>
+      <form class="project-form">
+        <label for="project-name">
+          Project name
+          <input id="project-name" name="project-name" type="text" placeholder="e.g. Payments API" required>
+        </label>
+        <label for="project-label">
+          Plan
+          <select id="project-label" name="project-label">
+            <option>Free</option>
+            <option>Pro</option>
+            <option>Enterprise</option>
+          </select>
+        </label>
+        <label for="project-category">
+          Category
+          <select id="project-category" name="project-category">
+            <option>REST API</option>
+            <option>GraphQL API</option>
+            <option>Internal API</option>
+          </select>
+        </label>
+        <label class="checkbox-label" for="project-published">
+          <input id="project-published" name="project-published" type="checkbox">
+          Published
+        </label>
+        <label for="project-owner">
+          Owner
+          <input id="project-owner" name="project-owner" type="text" placeholder="e.g. Ana Popescu" required>
+        </label>
+        <button class="app-button" type="submit">Add project <span aria-hidden="true">+</span></button>
+      </form>
+    </section>
+
+    <section class="app-panel list-panel" aria-labelledby="list-title">
+      <div class="list-heading">
+        <div>
+          <p class="app-eyebrow">Your workspace</p>
+          <h2 id="list-title">API projects</h2>
+        </div>
+        <span class="list-count">3 items</span>
+      </div>
+      <ul class="project-list">
+        <li class="project-card done">
+          <div class="project-card-main">
+            <span class="project-icon" aria-hidden="true">↗</span>
+            <div>
+              <h3>Commerce API</h3>
+              <p>REST API <span aria-hidden="true">·</span> Owned by Andrei Ionescu</p>
+            </div>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-badge badge-pro">Pro</span>
+            <span class="project-state state-published">Published</span>
+          </div>
+        </li>
+        <li class="project-card">
+          <div class="project-card-main">
+            <span class="project-icon" aria-hidden="true">◇</span>
+            <div>
+              <h3>Users API</h3>
+              <p>REST API <span aria-hidden="true">·</span> Owned by Maya Chen</p>
+            </div>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-badge badge-enterprise">Enterprise</span>
+            <span class="project-state state-published">Published</span>
+          </div>
+        </li>
+        <li class="project-card">
+          <div class="project-card-main">
+            <span class="project-icon" aria-hidden="true">○</span>
+            <div>
+              <h3>Analytics Gateway</h3>
+              <p>GraphQL API <span aria-hidden="true">·</span> Owned by Elena Matei</p>
+            </div>
+          </div>
+          <div class="project-card-meta">
+            <span class="project-badge badge-free">Free</span>
+            <span class="project-state state-draft">Draft</span>
+          </div>
+        </li>
+      </ul>
+      <!-- Reserved for the empty-list message in a later stage. -->
+      <p class="empty" hidden>No API projects yet. Add your first project above.</p>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>DocForge <span aria-hidden="true">·</span> Web Technologies Project</p>
+    <a href="docs.html">View generated docs example</a>
+  </footer>
+</body>
+</html>

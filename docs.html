@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Users API documentation generated with DocForge.">
+  <title>Users API | DocForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="docs-page">
+  <!-- Documentation site header -->
+  <header class="docs-header">
+    <a class="brand" href="index.html" aria-label="DocForge home">
+      <span class="brand-mark" aria-hidden="true">D</span>
+      <span>DocForge</span>
+    </a>
+    <div class="docs-header-meta"><span class="status-dot"></span> Users API <span class="version-label">v1.4.0</span></div>
+    <a class="header-link" href="index.html">Back to DocForge <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="docs-layout">
+    <!-- Search and grouped endpoint navigation -->
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <div class="search-box">
+        <span aria-hidden="true">⌕</span>
+        <input type="search" placeholder="Search docs" aria-label="Search documentation">
+        <kbd>⌘ K</kbd>
+      </div>
+      <div class="sidebar-intro">
+        <p class="eyebrow">API REFERENCE</p>
+        <h1>Users API</h1>
+        <p>Manage users, orders, and account data.</p>
+      </div>
+      <nav class="endpoint-nav" aria-label="Endpoint navigation">
+        <div class="nav-group">
+          <h2>Getting started</h2>
+          <a href="#overview">Overview</a>
+          <a href="#authentication">Authentication</a>
+          <a href="#errors">Errors</a>
+        </div>
+        <div class="nav-group">
+          <h2>Users <span>4</span></h2>
+          <a class="active" href="#get-user"><span class="method get">GET</span><code>/users/{id}</code></a>
+          <a href="#list-users"><span class="method get">GET</span><code>/users</code></a>
+          <a href="#create-user"><span class="method post">POST</span><code>/users</code></a>
+          <a href="#update-user"><span class="method put">PUT</span><code>/users/{id}</code></a>
+        </div>
+        <div class="nav-group">
+          <h2>Orders <span>2</span></h2>
+          <a href="#list-orders"><span class="method get">GET</span><code>/orders</code></a>
+          <a href="#delete-order"><span class="method delete">DELETE</span><code>/orders/{id}</code></a>
+        </div>
+      </nav>
+      <div class="sidebar-footer"><span class="status-dot"></span> API status: operational</div>
+    </aside>
+
+    <!-- Main endpoint reference content -->
+    <article class="docs-content" id="get-user">
+      <p class="breadcrumb">Users <span>/</span> Get a user</p>
+      <div class="endpoint-heading">
+        <span class="method get">GET</span>
+        <h2>/users/{id}</h2>
+      </div>
+      <p class="last-updated">Retrieve a single user by their unique identifier.</p>
+      <p class="body-copy">Returns the complete profile for an active user. The response includes account details and timestamps, but never exposes the user's password or private authentication tokens.</p>
+
+      <section class="doc-section" aria-labelledby="parameters-title">
+        <h3 id="parameters-title">Path parameters</h3>
+        <p class="section-description">Parameters required to identify the user.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>id</code></td><td><code>string</code></td><td><span class="required">Yes</span></td><td>The unique ID of the user to retrieve.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section" aria-labelledby="responses-title">
+        <h3 id="responses-title">Responses</h3>
+        <p class="section-description">The endpoint returns one of the following responses.</p>
+        <ul class="response-list">
+          <li><span class="response-code success">200</span><div><strong>OK</strong><p>The user was found and returned successfully.</p></div></li>
+          <li><span class="response-code client-error">404</span><div><strong>Not Found</strong><p>No user exists with the supplied ID.</p></div></li>
+          <li><span class="response-code server-error">500</span><div><strong>Internal Server Error</strong><p>The request could not be completed due to an unexpected error.</p></div></li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- Static request and response examples -->
+    <aside class="code-panel" aria-label="Code examples">
+      <div class="code-panel-header"><span>Examples</span><span class="language-label">cURL</span></div>
+      <section class="code-example">
+        <h2>Request</h2>
+        <pre><code><span class="code-command">curl</span> <span class="code-flag">--request</span> GET \
+  <span class="code-url">https://api.docforge.dev/v1/users/usr_8f92a</span> \
+  <span class="code-flag">--header</span> <span class="code-string">'Authorization: Bearer sk_live_••••'</span></code></pre>
+      </section>
+      <section class="code-example">
+        <h2>Response <span class="response-label">200 OK</span></h2>
+        <pre><code>{
+  <span class="json-key">"id"</span>: <span class="json-string">"usr_8f92a"</span>,
+  <span class="json-key">"name"</span>: <span class="json-string">"Maya Chen"</span>,
+  <span class="json-key">"email"</span>: <span class="json-string">"maya@example.com"</span>,
+  <span class="json-key">"role"</span>: <span class="json-string">"admin"</span>,
+  <span class="json-key">"active"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"createdAt"</span>: <span class="json-string">"2025-02-12T09:41:00Z"</span>
+}</code></pre>
+      </section>
+      <p class="code-note">All API requests require an <code>Authorization</code> header.</p>
+    </aside>
+  </main>
+</body>
+</html>
