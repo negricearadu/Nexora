@@ -1,14 +1,14 @@
 # Nexora
 
-Nexora is a web application for turning OpenAPI files into clear, hosted, wiki-style API documentation. The application manages a list of API projects. Each project has a name, a published/draft state, a plan label, a category, and an owner. This model gives the later JavaScript, React, server, database, and authentication stages the data they need.
+Nexora is a web application for turning OpenAPI files into clear, hosted, wiki-style API documentation. The Stage 2 data model manages API endpoints with the fields `id`, `path`, `method`, `description`, and `documented`.
 
 ## Problem it solves
 
 API documentation is often difficult to keep organized and up to date. Nexora will give development teams one place to add API projects, generate documentation from OpenAPI specifications, and publish a readable reference for their users.
 
-## Stage 1 theme and sample data
+## Stage 1 theme and sample content
 
-The Stage 1 interface is a static API project workspace. The add form contains:
+The Stage 1 interface is a static API project workspace. The following controls and cards are visual mockup content, not the Stage 2 data model:
 
 - **Project name**: text entered by the user
 - **Published**: a boolean checkbox representing the project state
@@ -17,6 +17,10 @@ The Stage 1 interface is a static API project workspace. The add form contains:
 - **Owner**: the user responsible for the project
 
 The three hard-coded sample projects are Commerce API, Users API, and Analytics Gateway. Commerce API is intentionally shown as finished/published with a strikethrough title so the completed-card requirement is visible.
+
+## Stage 2: data logic
+
+Plain JavaScript, no DOM. `endpointuri.js` holds the array of API endpoints and the functions that read and change it. Results are printed in the browser console (F12).
 
 ## Planned features
 
@@ -38,31 +42,31 @@ The three hard-coded sample projects are Commerce API, Users API, and Analytics 
 
 ## Current status
 
-**Stage 1 - static HTML/CSS mockup**
-
-The current implementation contains a semantic static page with a header, add-project form, project list, three cards, responsive layout, visible keyboard focus, and a dark color scheme based on `prefers-color-scheme`. There is no JavaScript or backend yet.
-
-The visual identity uses an Onyx and Carbon Black base with Dark Garnet, Mahogany Red, Strawberry Red, Silver, Dust Grey, White Smoke, and White accents. On desktop, the project list is the primary left column and the add-project form is placed in a narrower right column; below 700px the form moves above the list.
+- [x] Stage 1: static mockup
+- [x] Stage 2: data logic in JavaScript
+- [ ] Stage 3: Vite and React project
 
 ## Project structure
 
 ```text
 Nexora/
 ├── index.html           # Stage 1 API project list mockup
+├── endpointuri.js       # Stage 2 endpoint data and immutable functions
 ├── docs.html            # Supplementary generated Users API example
 ├── style.css            # Shared stylesheet and Stage 1 responsive styles
 ├── ai-log/
-│   └── etapa-01.md      # AI-use journal for Stage 1
+│   ├── etapa-01.md      # AI-use journal for Stage 1
+│   └── etapa-02.md      # AI-use journal for Stage 2
 └── README.md            # Project description and verification checklist
 ```
 
 ## How to view it
 
-Open [index.html](./index.html) directly in a browser. No server, JavaScript, package installation, or framework is required for Stage 1. Resize the browser below 700px to verify the one-column layout. The dark theme follows the operating system's `prefers-color-scheme` setting; it can be emulated from the browser DevTools Rendering panel.
+Open [index.html](./index.html) directly in a browser. No server, package installation, or framework is required. Open the browser console (F12) to see the Stage 2 data-logic results. Resize the browser below 700px to verify the one-column layout. The dark theme follows the operating system's `prefers-color-scheme` setting; it can be emulated from the browser DevTools Rendering panel.
 
 ## AI usage
 
-This stage used **GitHub Copilot (Copilot SDK in VS Code)** to help draft and revise the static HTML/CSS structure, responsive rules, accessibility focus styles, README, and AI log. The final theme, fields, sample data, and requirement mapping were reviewed and adapted to the university Stage 1 specification. No JavaScript or backend code was generated for this stage.
+This project used **GitHub Copilot (Copilot SDK in VS Code)** to help draft and revise the static HTML/CSS structure, responsive rules, accessibility focus styles, README, AI log, and Stage 2 data logic. The final theme, fields, sample data, and requirement mapping were reviewed and adapted to the university specification.
 
 ## Stage 1 verification checklist
 
