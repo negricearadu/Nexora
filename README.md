@@ -22,6 +22,10 @@ The three hard-coded sample projects are Commerce API, Users API, and Analytics 
 
 Plain JavaScript, no DOM. `endpointuri.js` holds the array of API endpoints and the functions that read and change it. Results are printed in the browser console (F12).
 
+## Stage 3: Vite and React project
+
+The app now lives in `frontend/`, built with Vite. The endpoint data from Stage 2 moved into the main React component, and the list is still printed raw as JSON until Stage 4.
+
 ## Planned features
 
 - Upload OpenAPI files in YAML or JSON format
@@ -44,25 +48,40 @@ Plain JavaScript, no DOM. `endpointuri.js` holds the array of API endpoints and 
 
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
-- [ ] Stage 3: Vite and React project
+- [x] Stage 3: Vite and React project
 
 ## Project structure
 
 ```text
 Nexora/
-├── index.html           # Stage 1 API project list mockup
-├── endpointuri.js       # Stage 2 endpoint data and immutable functions
+├── frontend/            # Vite and React application
+│   ├── package.json
+│   ├── index.html
+│   └── src/
+│       ├── App.jsx      # Stage 3 data and main component
+│       ├── App.css      # Reused Stage 1 styles
+│       └── main.jsx
+├── mockup/              # Previous HTML/CSS/JavaScript stages
+│   ├── index.html
+│   ├── endpointuri.js
+│   └── style.css
 ├── docs.html            # Supplementary generated Users API example
-├── style.css            # Shared stylesheet and Stage 1 responsive styles
 ├── ai-log/
 │   ├── etapa-01.md      # AI-use journal for Stage 1
-│   └── etapa-02.md      # AI-use journal for Stage 2
+│   ├── etapa-02.md      # AI-use journal for Stage 2
+│   └── etapa-03.md      # AI-use journal for Stage 3
 └── README.md            # Project description and verification checklist
 ```
 
-## How to view it
+## How to run
 
-Open [index.html](./index.html) directly in a browser. No server, package installation, or framework is required. Open the browser console (F12) to see the Stage 2 data-logic results. Resize the browser below 700px to verify the one-column layout. The dark theme follows the operating system's `prefers-color-scheme` setting; it can be emulated from the browser DevTools Rendering panel.
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Then open the address printed in the terminal, usually `http://localhost:5173`. The production build can be checked with `npm run build`. The dark theme follows the operating system's `prefers-color-scheme` setting.
 
 ## AI usage
 
@@ -77,11 +96,25 @@ The `Where` links below are local source references for the current working vers
 | S1-R1 | README contains description, fields, sample data, and how to run | [README.md](./README.md) | Read the theme, sample-data, and viewing sections |
 | S1-R2 | README contains AI usage declaration | [README.md](./README.md) | Read the AI usage section |
 | S1-R3 | Stage 1 AI log exists | [ai-log/etapa-01.md](./ai-log/etapa-01.md) | Read the stage journal |
-| S1-R4 | Header, text form field, fixed lists, and three own cards | [index.html](./index.html) | Open the page and inspect the form and project list |
-| S1-R5 | One card is visibly finished | [index.html](./index.html) and [style.css](./style.css) | Commerce API has class `done` and a crossed-out title |
-| S1-R6 | Two columns on desktop and one below 700px | [style.css](./style.css) | Resize the page below 700px |
-| S1-R7 | Visible focus and readable dark theme | [style.css](./style.css) | Press Tab and emulate `prefers-color-scheme: dark` |
+| S1-R4 | Header, text form field, fixed lists, and three own cards | [mockup/index.html](./mockup/index.html) | Open the page and inspect the form and project list |
+| S1-R5 | One card is visibly finished | [mockup/index.html](./mockup/index.html) and [frontend/src/App.css](./frontend/src/App.css) | Commerce API has class `done` and a crossed-out title |
+| S1-R6 | Two columns on desktop and one below 700px | [frontend/src/App.css](./frontend/src/App.css) | Resize the page below 700px |
+| S1-R7 | Visible focus and readable dark theme | [frontend/src/App.css](./frontend/src/App.css) | Press Tab and emulate `prefers-color-scheme: dark` |
 | S1-R8 | Stage 1 commit published to GitHub | Git history and repository URL | Check for a public commit named `Stage 1: static mockup with HTML and CSS` |
+
+## Stage 3 verification checklist
+
+The `Where` links below are local source references for the current working version. Replace them with GitHub permalinks after publishing the Stage 3 commits.
+
+| ID | Requirement | Where | How to check |
+| --- | --- | --- | --- |
+| S3-R1 | `npm run dev` starts without errors | [frontend/package.json](./frontend/package.json) | Run `npm install`, then `npm run dev` |
+| S3-R2 | App name and counter are computed from data | [frontend/src/App.jsx](./frontend/src/App.jsx) | Edit the endpoint array and save |
+| S3-R3 | Data comes from the Nexora Stage 2 model | [frontend/src/App.jsx](./frontend/src/App.jsx) | Compare the endpoint objects with `mockup/endpointuri.js` |
+| S3-R4 | Stage 1 styles are reused | [frontend/src/App.css](./frontend/src/App.css) | Inspect the page styling |
+| S3-R5 | `node_modules/` is ignored and build passes | [frontend/.gitignore](./frontend/.gitignore) | Run `npm run build` |
+| S3-R6 | README and AI log are updated | [README.md](./README.md), [ai-log/etapa-03.md](./ai-log/etapa-03.md) | Read the Stage 3 sections |
+| S3-R7 | Stage 3 commit is published | Git history and repository URL | Check the commit history after push |
 
 ## Roadmap by stage
 
