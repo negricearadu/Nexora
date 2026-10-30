@@ -1,6 +1,6 @@
 import EndpointCard from "./EndpointCard.jsx";
 
-export default function EndpointList({ endpoints }) {
+export default function EndpointList({ endpoints, onToggle, onDelete }) {
   if (endpoints.length === 0) {
     return <p className="empty">Nu există niciun endpoint.</p>;
   }
@@ -8,7 +8,12 @@ export default function EndpointList({ endpoints }) {
   return (
     <ul className="project-list">
       {endpoints.map((endpoint) => (
-        <EndpointCard key={endpoint.id} endpoint={endpoint} />
+        <EndpointCard
+          key={endpoint.id}
+          endpoint={endpoint}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
       ))}
     </ul>
   );

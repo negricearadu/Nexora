@@ -34,6 +34,10 @@ The endpoint list is now rendered from the data through two React components:
 - `EndpointCard` receives one endpoint through props and displays its method, path, description, and documented state.
 - The empty-list branch displays an explicit message, and each card uses its endpoint `id` as the React `key`.
 
+## Stage 5: local state and events
+
+The endpoint list now lives in React state. Users can mark endpoints as documented or delete them directly from the page, while the header counters update automatically. A button in the header switches between light and dark mode. These changes are local to the browser and reset on refresh.
+
 ## Planned features
 
 - Upload OpenAPI files in YAML or JSON format
@@ -58,7 +62,8 @@ The endpoint list is now rendered from the data through two React components:
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
-- [ ] Stage 5: local state and events
+- [x] Stage 5: local state and events
+- [ ] Stage 6: loading data from a mock API
 
 ## Project structure
 
@@ -83,7 +88,8 @@ Nexora/
 │   ├── etapa-01.md      # AI-use journal for Stage 1
 │   ├── etapa-02.md      # AI-use journal for Stage 2
 │   ├── etapa-03.md      # AI-use journal for Stage 3
-│   └── etapa-04.md      # AI-use journal for Stage 4
+│   ├── etapa-04.md      # AI-use journal for Stage 4
+│   └── etapa-05.md      # AI-use journal for Stage 5
 └── README.md            # Project description and verification checklist
 ```
 
@@ -143,6 +149,21 @@ The `Where` links below are local source references for the current working vers
 | S4-R5 | The documented state changes the card appearance | [EndpointCard.jsx](./frontend/src/components/EndpointCard.jsx) | Toggle an endpoint's `documented` value and observe the `done` class |
 | S4-R6 | README and the Stage 4 AI log are complete | [README.md](./README.md), [ai-log/etapa-04.md](./ai-log/etapa-04.md) | Read the Stage 4 sections |
 | S4-R7 | The Stage 4 commit is published | Git history and repository URL | Check the commit history after pushing |
+
+## Stage 5 verification checklist
+
+The `Where` links below are local source references for the current working version. Replace them with GitHub permalinks after publishing the Stage 5 commits.
+
+| ID | Requirement | Where | How to check |
+| --- | --- | --- | --- |
+| S5-R1 | The list is kept in `useState` in `App` | [frontend/src/App.jsx](./frontend/src/App.jsx) | Read the state declaration |
+| S5-R2 | Toggling changes state and card appearance | [EndpointCard.jsx](./frontend/src/components/EndpointCard.jsx), [App.jsx](./frontend/src/App.jsx) | Click a checkbox and inspect the card and counter |
+| S5-R3 | Deleting removes the endpoint | [EndpointCard.jsx](./frontend/src/components/EndpointCard.jsx), [App.jsx](./frontend/src/App.jsx) | Click `Șterge` |
+| S5-R4 | The header counter is derived, not stored in state | [frontend/src/App.jsx](./frontend/src/App.jsx) | Toggle an endpoint and watch the counter |
+| S5-R5 | Updates are immutable | [frontend/src/App.jsx](./frontend/src/App.jsx) | Read the `map`, `filter`, and functional state updates |
+| S5-R6 | Light/dark mode uses state and `data-theme` | [frontend/src/App.jsx](./frontend/src/App.jsx), [frontend/src/App.css](./frontend/src/App.css) | Click the theme button with either system theme |
+| S5-R7 | No console warnings; README and AI log are updated | [README.md](./README.md), [ai-log/etapa-05.md](./ai-log/etapa-05.md) | Run the app and inspect the browser Console |
+| S5-R8 | The Stage 5 commit is published | Git history and repository URL | Check the commit history after pushing |
 
 ## Roadmap by stage
 
