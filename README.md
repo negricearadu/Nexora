@@ -26,6 +26,14 @@ Plain JavaScript, no DOM. `endpointuri.js` holds the array of API endpoints and 
 
 The app now lives in `frontend/`, built with Vite. The endpoint data from Stage 2 moved into the main React component, and the list is still printed raw as JSON until Stage 4.
 
+## Stage 4: components rendered from data
+
+The endpoint list is now rendered from the data through two React components:
+
+- `EndpointList` receives the whole `endpoints` array and renders one card per item with `map`.
+- `EndpointCard` receives one endpoint through props and displays its method, path, description, and documented state.
+- The empty-list branch displays an explicit message, and each card uses its endpoint `id` as the React `key`.
+
 ## Planned features
 
 - Upload OpenAPI files in YAML or JSON format
@@ -49,6 +57,8 @@ The app now lives in `frontend/`, built with Vite. The endpoint data from Stage 
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from data
+- [ ] Stage 5: local state and events
 
 ## Project structure
 
@@ -58,7 +68,10 @@ Nexora/
 │   ├── package.json
 │   ├── index.html
 │   └── src/
-│       ├── App.jsx      # Stage 3 data and main component
+│       ├── components/
+│       │   ├── EndpointCard.jsx  # Stage 4 single endpoint component
+│       │   └── EndpointList.jsx  # Stage 4 list component
+│       ├── App.jsx      # Stage 4 data and main component
 │       ├── App.css      # Reused Stage 1 styles
 │       └── main.jsx
 ├── mockup/              # Previous HTML/CSS/JavaScript stages
@@ -69,7 +82,8 @@ Nexora/
 ├── ai-log/
 │   ├── etapa-01.md      # AI-use journal for Stage 1
 │   ├── etapa-02.md      # AI-use journal for Stage 2
-│   └── etapa-03.md      # AI-use journal for Stage 3
+│   ├── etapa-03.md      # AI-use journal for Stage 3
+│   └── etapa-04.md      # AI-use journal for Stage 4
 └── README.md            # Project description and verification checklist
 ```
 
@@ -115,6 +129,20 @@ The `Where` links below are local source references for the current working vers
 | S3-R5 | `node_modules/` is ignored and build passes | [frontend/.gitignore](./frontend/.gitignore) | Run `npm run build` |
 | S3-R6 | README and AI log are updated | [README.md](./README.md), [ai-log/etapa-03.md](./ai-log/etapa-03.md) | Read the Stage 3 sections |
 | S3-R7 | Stage 3 commit is published | Git history and repository URL | Check the commit history after push |
+
+## Stage 4 verification checklist
+
+The `Where` links below are local source references for the current working version. Replace them with GitHub permalinks after publishing the Stage 4 commits.
+
+| ID | Requirement | Where | How to check |
+| --- | --- | --- | --- |
+| S4-R1 | At least two components exist in `src/components/` | [frontend/src/components/](./frontend/src/components/) | Open the folder and inspect both component files |
+| S4-R2 | The card receives one endpoint through props | [EndpointCard.jsx](./frontend/src/components/EndpointCard.jsx) | Read the component parameter and rendered endpoint fields |
+| S4-R3 | The list uses `map` and `key={endpoint.id}` without console warnings | [EndpointList.jsx](./frontend/src/components/EndpointList.jsx) | Run the app and inspect the browser Console |
+| S4-R4 | An empty list displays a message | [EndpointList.jsx](./frontend/src/components/EndpointList.jsx) | Temporarily set `endpoints` to `[]` |
+| S4-R5 | The documented state changes the card appearance | [EndpointCard.jsx](./frontend/src/components/EndpointCard.jsx) | Toggle an endpoint's `documented` value and observe the `done` class |
+| S4-R6 | README and the Stage 4 AI log are complete | [README.md](./README.md), [ai-log/etapa-04.md](./ai-log/etapa-04.md) | Read the Stage 4 sections |
+| S4-R7 | The Stage 4 commit is published | Git history and repository URL | Check the commit history after pushing |
 
 ## Roadmap by stage
 

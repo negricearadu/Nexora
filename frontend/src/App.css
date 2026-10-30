@@ -237,6 +237,10 @@ pre { overflow-x: auto; margin: 0; padding: 19px; border-radius: 7px; color: var
 .badge-pro { color: var(--white-smoke); background: var(--mahogany-red-2); }
 .badge-enterprise { color: var(--white-smoke); background: var(--strawberry-red); }
 .badge-free { color: var(--white-smoke); background: var(--silver); }
+.badge-get { color: var(--green); background: var(--green-bg); }
+.badge-post { color: var(--blue); background: var(--blue-bg); }
+.badge-put { color: var(--orange); background: var(--orange-bg); }
+.badge-delete { color: var(--red); background: var(--red-bg); }
 .project-state { color: var(--app-muted); }
 .state-published::before { content: "●"; margin-right: 4px; color: #24865a; }
 .state-draft::before { content: "●"; margin-right: 4px; color: #b56a1b; }

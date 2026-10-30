@@ -1,3 +1,5 @@
+import EndpointList from "./components/EndpointList.jsx";
+
 const endpoints = [
   { id: 1, path: "/users/{id}", method: "GET", description: "Returnează un utilizator după id", documented: true },
   { id: 2, path: "/users", method: "POST", description: "Creează un utilizator nou", documented: false },
@@ -32,7 +34,7 @@ export default function App() {
             </div>
             <span className="list-count">{endpoints.length} items</span>
           </div>
-          <pre>{JSON.stringify(endpoints, null, 2)}</pre>
+          <EndpointList endpoints={endpoints} />
         </section>
       </main>
 
