@@ -1,0 +1,35 @@
+:root {
+  --ink: #161a1d;
+  --muted: #665f60;
+  --line: #ded7d7;
+  --surface: #ffffff;
+  --soft: #f5f3f4;
+  --purple: #ba181b;
+  --purple-dark: #660708;
+  --green-bg: #f7dddd;
+  --error-bg: #fbe2e2;
+  --error-border: #e5383b;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--surface); font-family: Inter, Arial, sans-serif; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+h1, h2, h3, p { margin-top: 0; }
+.eyebrow { margin: 0 0 10px; color: var(--purple); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.panel { padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 7px; padding: 9px 13px; cursor: pointer; font-size: .8rem; font-weight: 700; }
+.btn:disabled { cursor: wait; opacity: .65; }
+.btn-primary { color: white; background: var(--purple); }
+.btn-primary:hover { background: var(--purple-dark); }
+.btn-danger { color: var(--purple-dark); background: var(--green-bg); }
+.btn-danger:hover { background: var(--error-bg); }
+.info { color: var(--muted); }
+.error { padding: 10px 12px; border: 1px solid var(--error-border); border-radius: 8px; color: var(--purple-dark); background: var(--error-bg); }
+.back-link { display: inline-block; margin-bottom: 18px; color: var(--purple); font-size: .85rem; font-weight: 700; }
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #f5f3f4; --muted: #b1a7a6; --line: #3a3334; --surface: #161a1d; --soft: #242021; --error-bg: #3b1d2e; --error-border: #ba181b; }
+}
+[data-theme="light"] { --ink: #161a1d; --muted: #665f60; --line: #ded7d7; --surface: #ffffff; --soft: #f5f3f4; --error-bg: #fbe2e2; --error-border: #e5383b; }
+[data-theme="dark"] { --ink: #f5f3f4; --muted: #b1a7a6; --line: #3a3334; --surface: #161a1d; --soft: #242021; --error-bg: #3b1d2e; --error-border: #ba181b; }

@@ -38,6 +38,28 @@ The endpoint list is now rendered from the data through two React components:
 
 The endpoint list now lives in React state. Users can mark endpoints as documented or delete them directly from the page, while the header counters update automatically. A button in the header switches between light and dark mode. These changes are local to the browser and reset on refresh.
 
+## Stage 6: data from a mock API
+
+The React list now loads from `frontend/db.json` through `json-server`. All HTTP requests are isolated in `frontend/src/api.js`. The interface exposes explicit loading, success, and error states, and `VITE_API_URL` can override the default API address.
+
+Start both processes in separate terminals:
+
+```bash
+cd frontend
+npm run api
+npm run dev
+```
+
+The API is available at `http://localhost:3001/endpoints`.
+
+## Stage 7: controlled form and persistent CRUD
+
+The endpoint form validates a non-empty path, a leading `/`, and a maximum length before sending a `POST`. Toggling documentation sends `PATCH`, and deleting sends `DELETE`; the list changes only after the server confirms the operation. The root `tw.json` and `data-testid` attributes document the resource shape used by automated checks.
+
+## Stage 8: navigation and component styling
+
+React Router provides the list (`/`), endpoint details (`/endpoints/:id`), about (`/despre`), and not-found routes. Detail pages load the requested endpoint directly from the API. Component and page styles use CSS Modules, while `src/index.css` contains shared tokens and utility classes.
+
 ## Planned features
 
 - Upload OpenAPI files in YAML or JSON format
@@ -63,7 +85,9 @@ The endpoint list now lives in React state. Users can mark endpoints as document
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
-- [ ] Stage 6: loading data from a mock API
+- [x] Stage 6: loading data from a mock API
+- [x] Stage 7: persistent CRUD, form, and validation
+- [x] Stage 8: routing, details, 404, and CSS Modules
 
 ## Project structure
 
@@ -73,17 +97,19 @@ Nexora/
 │   ├── package.json
 │   ├── index.html
 │   └── src/
-│       ├── components/
-│       │   ├── EndpointCard.jsx  # Stage 4 single endpoint component
-│       │   └── EndpointList.jsx  # Stage 4 list component
-│       ├── App.jsx      # Stage 4 data and main component
-│       ├── App.css      # Reused Stage 1 styles
+│       ├── components/           # Reusable components and CSS Modules
+│       ├── pages/                # Routed list, detail, about, and 404 pages
+│       ├── api.js                # Centralized HTTP requests
+│       ├── constants.js          # Shared method options and labels
+│       ├── App.jsx               # Route map
+│       └── index.css              # Shared design tokens and utilities
 │       └── main.jsx
 ├── mockup/              # Previous HTML/CSS/JavaScript stages
 │   ├── index.html
 │   ├── endpointuri.js
 │   └── style.css
 ├── docs.html            # Supplementary generated Users API example
+├── tw.json                   # Automated-check configuration
 ├── ai-log/
 │   ├── etapa-01.md      # AI-use journal for Stage 1
 │   ├── etapa-02.md      # AI-use journal for Stage 2
@@ -101,7 +127,7 @@ npm install
 npm run dev
 ```
 
-Then open the address printed in the terminal, usually `http://localhost:5173`. The production build can be checked with `npm run build`. The dark theme follows the operating system's `prefers-color-scheme` setting.
+Then open the address printed in the terminal, usually `http://localhost:5173`. The production build can be checked with `npm run build`. The dark theme follows the operating system's `prefers-color-scheme` setting until the header toggle is used.
 
 ## AI usage
 

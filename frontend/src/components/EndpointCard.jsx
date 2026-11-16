@@ -1,43 +1,41 @@
-const METHOD_LABELS = {
-  GET: "GET",
-  POST: "POST",
-  PUT: "PUT",
-  DELETE: "DELETE",
-};
+import { Link } from "react-router-dom";
+import { METHOD_LABELS } from "../constants.js";
+import styles from "./EndpointCard.module.css";
 
 export default function EndpointCard({ endpoint, onToggle, onDelete }) {
   const methodClass = endpoint.method.toLowerCase();
-  const cardClassName = endpoint.documented ? "project-card done" : "project-card";
-  const stateClassName = endpoint.documented ? "project-state state-published" : "project-state state-draft";
+  const cardClassName = endpoint.documented ? `${styles.card} ${styles.done}` : styles.card;
 
   return (
-    <li className={cardClassName}>
-      <div className="project-card-main">
-        <span className={`method ${methodClass}`} aria-label={`Metoda ${METHOD_LABELS[endpoint.method]}`}>
+    <li className={cardClassName} data-testid="item-card" data-id={endpoint.id}>
+      <div className={styles.main}>
+        <span className={`${styles.method} ${styles[methodClass]}`} aria-label={`Metoda ${METHOD_LABELS[endpoint.method]}`}>
           {METHOD_LABELS[endpoint.method]}
         </span>
-        <label className="endpoint-toggle">
+        <label className={styles.toggle}>
           <input
             type="checkbox"
             checked={endpoint.documented}
             onChange={() => onToggle(endpoint.id)}
+            data-testid="item-toggle"
           />
           <span>
-            <h3>{endpoint.path}</h3>
+            <h3><Link to={`/endpoints/${endpoint.id}`}>{endpoint.path}</Link></h3>
             <p>{endpoint.description}</p>
           </span>
         </label>
       </div>
-      <div className="project-card-meta">
-        <span className={`project-badge badge-${methodClass}`}>{endpoint.method}</span>
-        <span className={stateClassName}>
+      <div className={styles.meta}>
+        <span className={styles.badge}>{endpoint.method}</span>
+        <span className={styles.state}>
           {endpoint.documented ? "Documentat" : "Nedocumentat"}
         </span>
         <button
-          className="btn-danger"
+          className="btn btn-danger"
           type="button"
           onClick={() => onDelete(endpoint.id)}
           aria-label={`Șterge endpoint-ul ${endpoint.path}`}
+          data-testid="item-delete"
         >
           Șterge
         </button>

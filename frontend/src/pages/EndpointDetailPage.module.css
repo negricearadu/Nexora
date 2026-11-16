@@ -1,0 +1,41 @@
+.container {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 64px 32px 80px;
+}
+
+.method {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 5px;
+  color: var(--purple);
+  background: var(--green-bg);
+  font: 700 .75rem "JetBrains Mono", monospace;
+}
+
+.fields {
+  display: grid;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.fields div {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.fields dt {
+  color: var(--muted);
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.fields dd {
+  margin: 4px 0 0;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 40px 20px 60px; }
+}

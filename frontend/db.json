@@ -1,0 +1,39 @@
+{
+  "endpoints": [
+    {
+      "id": 1,
+      "path": "/users/{id}",
+      "method": "GET",
+      "description": "Returnează un utilizator după id",
+      "documented": false
+    },
+    {
+      "id": 2,
+      "path": "/users",
+      "method": "POST",
+      "description": "Creează un utilizator nou",
+      "documented": false
+    },
+    {
+      "id": 3,
+      "path": "/users/{id}",
+      "method": "DELETE",
+      "description": "Șterge un utilizator",
+      "documented": false
+    },
+    {
+      "id": 4,
+      "path": "/projects",
+      "method": "GET",
+      "description": "Listează proiectele API disponibile",
+      "documented": true
+    },
+    {
+      "id": 5,
+      "path": "/projects/{id}",
+      "method": "PUT",
+      "description": "Actualizează un proiect API",
+      "documented": false
+    }
+  ]
+}
