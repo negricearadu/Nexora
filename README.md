@@ -208,6 +208,19 @@ The `Where` links below are local source references for the current working vers
 | S6-R6 | README Stage 6 section + AI log | [README.md](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/README.md), [ai-log/etapa-06.md](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/ai-log/etapa-06.md) | Read |
 | S6-R7 | Commit "Stage 6" pushed | [Stage 6: data from a mock API](https://github.com/negricearadu/Nexora/commit/1c61dfea85079c3fc890e47689a436eef3caea0a) | Commit history |
 
+## Stage 7 verification checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S7-R1 | Controlled form: `value` + `onChange` on every field | [EndpointForm.jsx#L16-L24](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointForm.jsx#L16-L24), [#L53-L90](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointForm.jsx#L53-L90) | Read |
+| S7-R2 | Empty path shows an error, nothing is sent | [EndpointForm.jsx#L8-L13](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointForm.jsx#L8-L13) (`validate`), [#L29-L36](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointForm.jsx#L29-L36) | Submit empty, watch Network |
+| S7-R3 | Added item shows in the list and survives refresh | [EndpointsPage.jsx#L29-L32](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/pages/EndpointsPage.jsx#L29-L32) (`handleAdd`), [api.js#L27-L32](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/api.js#L27-L32) | Add, refresh |
+| S7-R4 | Toggle and delete survive refresh | [EndpointsPage.jsx#L34-L53](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/pages/EndpointsPage.jsx#L34-L53), [api.js#L34-L43](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/api.js#L34-L43) | Toggle/delete, refresh |
+| S7-R5 | Button disabled while sending, form cleared only on success | [EndpointForm.jsx#L40-L49](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointForm.jsx#L40-L49), [#L87](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointForm.jsx#L87) | `npm run api -- --delay 3000`; stop the API and submit |
+| S7-R6 | `tw.json` and the `data-testid` attributes from table 7.3 | [tw.json](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/tw.json), [EndpointCard.jsx#L10-L38](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointCard.jsx#L10-L38), [EndpointForm.jsx#L53-L87](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointForm.jsx#L53-L87), [EndpointList.jsx#L6](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/frontend/src/components/EndpointList.jsx#L6) | `querySelectorAll` in the console |
+| S7-R7 | README Stage 7 section + AI log | [README.md](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/README.md), [ai-log/etapa-07.md](https://github.com/negricearadu/Nexora/blob/dbf2d10fc089f94191bae784e0ae2a590a5b4839/ai-log/etapa-07.md) | Read |
+| S7-R8 | Commit "Stage 7" pushed | [Stage 7: form and validation](https://github.com/negricearadu/Nexora/commit/dbf2d10fc089f94191bae784e0ae2a590a5b4839) | Commit history |
+
 ## Roadmap by stage
 
 | Stage | Goal |
