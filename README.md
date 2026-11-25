@@ -49,9 +49,11 @@ npm run api   # terminal 1, http://localhost:3001/endpoints
 npm run dev   # terminal 2, http://localhost:5173
 ```
 
-## Stage 7: controlled form and persistent CRUD
+## Stage 7: form and validation
 
-The endpoint form validates a non-empty path, a leading `/`, and a maximum length before sending a `POST`. Toggling documentation sends `PATCH`, and deleting sends `DELETE`; the list changes only after the server confirms the operation. The root `tw.json` and `data-testid` attributes document the resource shape used by automated checks.
+Endpoints can be added from the page. The form (`EndpointForm`) is controlled and validated: an empty path, a path that does not start with `/`, or a path longer than 120 characters shows an error next to the form and nothing is sent. Every change (add with `POST`, toggle with `PATCH`, delete with `DELETE`) goes to the API before it shows up in the list, so it survives a page refresh. The submit button is disabled while saving, and the form is cleared only after a successful save.
+
+`tw.json` in the repository root describes the resource used by the automated checks (`endpoints`, title field `path`, state field `documented`), and the elements from table 7.3 carry `data-testid` attributes (`form`, `form-title`, `form-method`, `form-description`, `form-submit`, `form-error`, `item`, `item-title`, `item-toggle`, `item-delete`, `empty`, `loading`, `error`).
 
 ## Stage 8: navigation and component styling
 
@@ -83,7 +85,7 @@ React Router provides the list (`/`), endpoint details (`/endpoints/:id`), about
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
-- [ ] Stage 7: form and validation
+- [x] Stage 7: form and validation
 - [ ] Stage 8: routing and detail page
 
 ## Project structure

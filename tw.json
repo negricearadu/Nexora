@@ -1,5 +1,6 @@
 {
   "resource": "endpoints",
   "title": "path",
-  "done": "documented"
+  "done": "documented",
+  "sample": { "method": "POST", "description": "Endpoint adaugat din formular" }
 }

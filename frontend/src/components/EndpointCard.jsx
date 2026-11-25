@@ -7,7 +7,7 @@ export default function EndpointCard({ endpoint, onToggle, onDelete }) {
   const cardClassName = endpoint.documented ? `${styles.card} ${styles.done}` : styles.card;
 
   return (
-    <li className={cardClassName} data-testid="item-card" data-id={endpoint.id}>
+    <li className={cardClassName} data-testid="item" data-id={endpoint.id}>
       <div className={styles.main}>
         <span className={`${styles.method} ${styles[methodClass]}`} aria-label={`Metoda ${METHOD_LABELS[endpoint.method]}`}>
           {METHOD_LABELS[endpoint.method]}
@@ -20,7 +20,7 @@ export default function EndpointCard({ endpoint, onToggle, onDelete }) {
             data-testid="item-toggle"
           />
           <span>
-            <h3><Link to={`/endpoints/${endpoint.id}`}>{endpoint.path}</Link></h3>
+            <h3 data-testid="item-title"><Link to={`/endpoints/${endpoint.id}`}>{endpoint.path}</Link></h3>
             <p>{endpoint.description}</p>
           </span>
         </label>
