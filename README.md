@@ -40,17 +40,14 @@ The endpoint list now lives in React state. Users can mark endpoints as document
 
 ## Stage 6: data from a mock API
 
-The React list now loads from `frontend/db.json` through `json-server`. All HTTP requests are isolated in `frontend/src/api.js`. The interface exposes explicit loading, success, and error states, and `VITE_API_URL` can override the default API address.
-
-Start both processes in separate terminals:
+The list is served by `json-server` from `frontend/db.json`. The app fetches it on load and shows a loading state and an error state. All HTTP requests live in `frontend/src/api.js`, and the API address is read from `VITE_API_URL` (see `frontend/.env.example`), with `http://localhost:3001` as the default.
 
 ```bash
 cd frontend
-npm run api
-npm run dev
+npm install
+npm run api   # terminal 1, http://localhost:3001/endpoints
+npm run dev   # terminal 2, http://localhost:5173
 ```
-
-The API is available at `http://localhost:3001/endpoints`.
 
 ## Stage 7: controlled form and persistent CRUD
 
@@ -78,16 +75,16 @@ React Router provides the list (`/`), endpoint details (`/endpoints/:id`), about
 - PostgreSQL
 - EJS templates
 
-## Current status
+## Status
 
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
-- [x] Stage 6: loading data from a mock API
-- [x] Stage 7: persistent CRUD, form, and validation
-- [x] Stage 8: routing, details, 404, and CSS Modules
+- [x] Stage 6: data from a mock API
+- [ ] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page
 
 ## Project structure
 
