@@ -39,3 +39,7 @@
 @media (max-width: 600px) {
   .container { padding: 40px 20px 60px; }
 }
+
+.done {
+  text-decoration: line-through;
+}

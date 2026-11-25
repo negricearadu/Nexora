@@ -55,9 +55,11 @@ Endpoints can be added from the page. The form (`EndpointForm`) is controlled an
 
 `tw.json` in the repository root describes the resource used by the automated checks (`endpoints`, title field `path`, state field `documented`), and the elements from table 7.3 carry `data-testid` attributes (`form`, `form-title`, `form-method`, `form-description`, `form-submit`, `form-error`, `item`, `item-title`, `item-toggle`, `item-delete`, `empty`, `loading`, `error`).
 
-## Stage 8: navigation and component styling
+## Stage 8: routing and detail page
 
-React Router provides the list (`/`), endpoint details (`/endpoints/:id`), about (`/despre`), and not-found routes. Detail pages load the requested endpoint directly from the API. Component and page styles use CSS Modules, while `src/index.css` contains shared tokens and utility classes.
+Four pages behind React Router: the list (`/`), a detail page at `/endpoints/:id` (the route uses the `resource` from `tw.json`), an about page (`/despre`), and a 404 page for any other address. The header navigation uses `NavLink`, so pages change without a reload, and the endpoint path in every card is a `Link` to its detail page. The detail page loads the endpoint by id from the API, so refreshing on `/endpoints/1` works, and a missing id (for example `/endpoints/999`) shows an error with a way back to the list. Component styles moved to CSS Modules; `src/index.css` keeps only shared variables and classes.
+
+Stage 8 adds the `data-testid` attributes from table 8.2: `nav`, `item-link`, `detail`, `detail-title`, `not-found` (plus `loading` and `error` on the detail page).
 
 ## Planned features
 
@@ -86,7 +88,8 @@ React Router provides the list (`/`), endpoint details (`/endpoints/:id`), about
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
 
 ## Project structure
 
@@ -114,7 +117,10 @@ Nexora/
 │   ├── etapa-02.md      # AI-use journal for Stage 2
 │   ├── etapa-03.md      # AI-use journal for Stage 3
 │   ├── etapa-04.md      # AI-use journal for Stage 4
-│   └── etapa-05.md      # AI-use journal for Stage 5
+│   ├── etapa-05.md      # AI-use journal for Stage 5
+│   ├── etapa-06.md      # AI-use journal for Stage 6
+│   ├── etapa-07.md      # AI-use journal for Stage 7
+│   └── etapa-08.md      # AI-use journal for Stage 8
 └── README.md            # Project description and verification checklist
 ```
 

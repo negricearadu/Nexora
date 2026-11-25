@@ -12,18 +12,24 @@ export default function EndpointCard({ endpoint, onToggle, onDelete }) {
         <span className={`${styles.method} ${styles[methodClass]}`} aria-label={`Metoda ${METHOD_LABELS[endpoint.method]}`}>
           {METHOD_LABELS[endpoint.method]}
         </span>
-        <label className={styles.toggle}>
+        <div className={styles.toggle}>
           <input
             type="checkbox"
             checked={endpoint.documented}
             onChange={() => onToggle(endpoint.id)}
+            aria-label={`Marchează ${endpoint.path} ca documentat`}
             data-testid="item-toggle"
           />
-          <span>
-            <h3 data-testid="item-title"><Link to={`/endpoints/${endpoint.id}`}>{endpoint.path}</Link></h3>
+          <div>
+            {/* Titlul este link spre pagina de detaliu: /endpoints/:id */}
+            <h3 data-testid="item-title">
+              <Link to={`/endpoints/${endpoint.id}`} data-testid="item-link">
+                {endpoint.path}
+              </Link>
+            </h3>
             <p>{endpoint.description}</p>
-          </span>
-        </label>
+          </div>
+        </div>
       </div>
       <div className={styles.meta}>
         <span className={styles.badge}>{endpoint.method}</span>

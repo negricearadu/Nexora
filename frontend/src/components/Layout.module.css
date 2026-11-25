@@ -12,6 +12,7 @@
 .header { border-bottom: 1px solid var(--line); }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; }
 .mark { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; color: white; background: var(--purple); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
 .nav { display: flex; gap: 22px; color: var(--muted); font-size: .85rem; font-weight: 600; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--purple); }
 .footer { margin-top: auto; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
