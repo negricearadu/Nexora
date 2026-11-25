@@ -196,6 +196,18 @@ The `Where` links below are local source references for the current working vers
 | S5-R7 | No console warnings; README and AI log are updated | [README.md](./README.md), [ai-log/etapa-05.md](./ai-log/etapa-05.md) | Run the app and inspect the browser Console |
 | S5-R8 | The Stage 5 commit is published | Git history and repository URL | Check the commit history after pushing |
 
+## Stage 6 verification checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S6-R1 | `npm run api` starts, the route shows JSON | [package.json#L10](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/package.json#L10), [db.json](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/db.json) | Open `http://localhost:3001/endpoints` |
+| S6-R2 | Data no longer in React | [EndpointsPage.jsx#L8](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/src/pages/EndpointsPage.jsx#L8) (`useState([])`) | Search the components for hard-coded endpoints; only `fetch` remains |
+| S6-R3 | Loading message while waiting | [EndpointsPage.jsx#L73](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/src/pages/EndpointsPage.jsx#L73) | `npm run api -- --delay 4000`, refresh |
+| S6-R4 | Error message when the API is down | [EndpointsPage.jsx#L13-L27](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/src/pages/EndpointsPage.jsx#L13-L27), [#L74](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/src/pages/EndpointsPage.jsx#L74) | Stop `npm run api`, refresh |
+| S6-R5 | `fetch` only in `api.js`, URL from env | [api.js#L1-L17](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/src/api.js#L1-L17), [.env.example](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/frontend/.env.example) | Search for `fetch` in `src/` |
+| S6-R6 | README Stage 6 section + AI log | [README.md](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/README.md), [ai-log/etapa-06.md](https://github.com/negricearadu/Nexora/blob/1c61dfea85079c3fc890e47689a436eef3caea0a/ai-log/etapa-06.md) | Read |
+| S6-R7 | Commit "Stage 6" pushed | [Stage 6: data from a mock API](https://github.com/negricearadu/Nexora/commit/1c61dfea85079c3fc890e47689a436eef3caea0a) | Commit history |
+
 ## Roadmap by stage
 
 | Stage | Goal |
