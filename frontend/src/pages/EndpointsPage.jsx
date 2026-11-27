@@ -71,7 +71,7 @@ export default function EndpointsPage() {
           <span>{endpoints.length} elemente · {undocumented} nedocumentate</span>
         </div>
         {loading && <p className="info" data-testid="loading">Se încarcă endpoint-urile...</p>}
-        {error && <p className="error" data-testid="error">Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>.</p>}
+        {error && <p className="error" data-testid="error">Nu am putut încărca datele: {error}. Pornește API-ul din folderul <code>backend</code> cu <code>npm run dev</code>.</p>}
         {actionError && <p className="error" data-testid="action-error">{actionError}</p>}
         {!loading && !error && (
           <EndpointList endpoints={endpoints} onToggle={handleToggle} onDelete={handleDelete} />

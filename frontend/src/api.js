@@ -10,7 +10,12 @@ async function request(path, options = {}) {
   });
 
   if (!response.ok) {
-    throw new Error(`Eroare server: ${response.status}`);
+    let message = `Eroare server: ${response.status}`;
+    if ((response.headers.get("content-type") || "").includes("application/json")) {
+      const data = await response.json();
+      if (typeof data.error === "string" && data.error) message = data.error;
+    }
+    throw new Error(message);
   }
 
   return response.status === 204 ? null : response.json();

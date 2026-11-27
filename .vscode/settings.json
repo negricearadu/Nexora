@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git status --short; Get-Command pdftotext -ErrorAction SilentlyContinue \\| Select-Object -ExpandProperty Source; python -c \"import importlib\\.util; print\\('pypdf', bool\\(importlib\\.util\\.find_spec\\('pypdf'\\)\\)\\); print\\('PyPDF2', bool\\(importlib\\.util\\.find_spec\\('PyPDF2'\\)\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

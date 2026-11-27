@@ -40,13 +40,20 @@ The endpoint list now lives in React state. Users can mark endpoints as document
 
 ## Stage 6: data from a mock API
 
-The list is served by `json-server` from `frontend/db.json`. The app fetches it on load and shows a loading state and an error state. All HTTP requests live in `frontend/src/api.js`, and the API address is read from `VITE_API_URL` (see `frontend/.env.example`), with `http://localhost:3001` as the default.
+The initial implementation used `json-server` and `frontend/db.json`. In Stage 9, that mock server and its data file were replaced by the Express API in `backend/`. The app still fetches on load and shows loading and error states. All HTTP requests live in `frontend/src/api.js`, and the API address is read from `VITE_API_URL` (see `frontend/.env.example`), with `http://localhost:3001` as the default.
+
+```bash
+cd backend
+npm install
+npm run dev   # terminal 1, http://localhost:3001
+```
+
+In a second terminal:
 
 ```bash
 cd frontend
 npm install
-npm run api   # terminal 1, http://localhost:3001/endpoints
-npm run dev   # terminal 2, http://localhost:5173
+npm run dev   # http://localhost:5173
 ```
 
 ## Stage 7: form and validation
@@ -60,6 +67,32 @@ Endpoints can be added from the page. The form (`EndpointForm`) is controlled an
 Four pages behind React Router: the list (`/`), a detail page at `/endpoints/:id` (the route uses the `resource` from `tw.json`), an about page (`/despre`), and a 404 page for any other address. The header navigation uses `NavLink`, so pages change without a reload, and the endpoint path in every card is a `Link` to its detail page. The detail page loads the endpoint by id from the API, so refreshing on `/endpoints/1` works, and a missing id (for example `/endpoints/999`) shows an error with a way back to the list. Component styles moved to CSS Modules; `src/index.css` keeps only shared variables and classes.
 
 Stage 8 adds the `data-testid` attributes from table 8.2: `nav`, `item-link`, `detail`, `detail-title`, `not-found` (plus `loading` and `error` on the detail page).
+
+## Stage 9: own Express backend
+
+The separate `backend/` Node.js project replaces `json-server`; the React frontend and its API URL stay the same. Express exposes `GET /health` and the complete endpoint API: `GET /endpoints`, `GET /endpoints/:id`, `POST /endpoints`, `PATCH /endpoints/:id`, and `DELETE /endpoints/:id`. The server validates endpoint fields, returns appropriate HTTP status codes and JSON errors, and enables CORS for `http://localhost:5173` by default.
+
+The API keeps the seed endpoints in memory, so changes survive a browser refresh but reset when the backend restarts. To configure the port or allowed frontend origin, copy `backend/.env.example` to `backend/.env` and edit the values. The backend development command watches for file changes:
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Run the frontend in a second terminal with `cd frontend; npm install; npm run dev`.
+
+### Stage 9 verification checklist
+
+| ID | Requirement | Where | How to check |
+|---|---|---|---|
+| S9-R1 | Express starts on port 3001 and responds to health checks | `backend/package.json`, `backend/src/server.js`, `backend/src/app.js` | Run `npm run dev` in `backend/`, then open `http://localhost:3001/health`. |
+| S9-R2 | Endpoint routes support list, detail, create, update, and delete with the expected status codes | `backend/src/routes/endpoints.js` | Send GET, POST, PATCH, and DELETE requests to `/endpoints`. |
+| S9-R3 | Invalid endpoint data returns HTTP 400 and a clear JSON error | `backend/src/validation.js` | POST an endpoint with an invalid path or method. |
+| S9-R4 | The frontend works with json-server removed | `frontend/src/api.js`, `frontend/src/pages/EndpointsPage.jsx` | Start both projects and add, toggle, and delete an endpoint. |
+| S9-R5 | The frontend origin is permitted by CORS | `backend/src/app.js` | Open the frontend and check the browser console for CORS errors. |
+| S9-R6 | README and Stage 9 AI log are complete | `README.md`, `ai-log/etapa-09.md` | Review the Stage 9 section and journal. |
+| S9-R7 | Stage 9 is committed and pushed | GitHub commit permalink | **Manual:** commit and push after reviewing; add the resulting permalink here. |
 
 ## Planned features
 
@@ -89,12 +122,22 @@ Stage 8 adds the `data-testid` attributes from table 8.2: `nav`, `item-link`, `d
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
 - [x] Stage 8: routing and detail page
-- [ ] Stage 9: own backend with Express
+- [x] Stage 9: own backend with Express
 
 ## Project structure
 
 ```text
 Nexora/
+├── backend/             # Express API and server-side validation
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── .env.example
+│   └── src/
+│       ├── app.js
+│       ├── server.js
+│       ├── validation.js
+│       └── routes/
+│           └── endpoints.js
 ├── frontend/            # Vite and React application
 │   ├── package.json
 │   ├── index.html
@@ -120,11 +163,20 @@ Nexora/
 │   ├── etapa-05.md      # AI-use journal for Stage 5
 │   ├── etapa-06.md      # AI-use journal for Stage 6
 │   ├── etapa-07.md      # AI-use journal for Stage 7
-│   └── etapa-08.md      # AI-use journal for Stage 8
+│   ├── etapa-08.md      # AI-use journal for Stage 8
+│   └── etapa-09.md      # AI-use journal for Stage 9
 └── README.md            # Project description and verification checklist
 ```
 
 ## How to run
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+In a second terminal:
 
 ```bash
 cd frontend
@@ -132,7 +184,7 @@ npm install
 npm run dev
 ```
 
-Then open the address printed in the terminal, usually `http://localhost:5173`. The production build can be checked with `npm run build`. The dark theme follows the operating system's `prefers-color-scheme` setting until the header toggle is used.
+Then open `http://localhost:5173`. Check the API at `http://localhost:3001/health`. The backend requires Node.js 22.12 or later. The production build can be checked with `npm run build` from `frontend/`. The dark theme follows the operating system's `prefers-color-scheme` setting until the header toggle is used.
 
 ## AI usage
 
